@@ -1,6 +1,6 @@
 local UndercoversGuiLib = Instance.new("ScreenGui")
 UndercoversGuiLib.Name = "UndercoversGuiLib"
-UndercoversGuiLib.Parent = game:GetService("Players").LocalPlayer.PlayerGui
+UndercoversGuiLib.Parent = game.CoreGui
 
 local function MakeUiDraggble(gui)
 	local UserInputService = game:GetService("UserInputService")
