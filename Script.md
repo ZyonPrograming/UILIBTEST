@@ -123,12 +123,12 @@ Lib.AddTab = function(TabName,WindowName)
 		Template_Tab.Size = UDim2.new(0.743999898, 0, 0.899486363, 0)
 		Template_Tab.Parent = CurrentWindow.Tabs
 		Template_Tab.Visible = false
-		
+
 		UIListLayout.Parent = Template_Tab
 		UIListLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
 		UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
 		UIListLayout.Padding = UDim.new(0, 20)
-		
+
 		local UIListLayout = Instance.new("UIListLayout")
 		local TemplateBtn = Instance.new("TextButton")
 		local Roundify = Instance.new("ImageLabel")
@@ -166,12 +166,12 @@ Lib.AddTab = function(TabName,WindowName)
 		Roundify.ScaleType = Enum.ScaleType.Slice
 		Roundify.SliceCenter = Rect.new(100, 100, 100, 100)
 		Roundify.SliceScale = 0.040
-		
+
 		TemplateBtn.MouseButton1Click:Connect(function()
 			for _, tab in pairs(CurrentWindow.Tabs:GetChildren()) do
 				tab.Visible = false
 			end
-			
+
 			Template_Tab.Visible = true
 		end)
 	end
@@ -181,7 +181,7 @@ Lib.AddTextLabel = function(Name,TabName,WindowName)
 	if UndercoversGuiLib:FindFirstChild(WindowName) then
 		local CurrentWindow = UndercoversGuiLib[WindowName]
 		local CurrentTab = CurrentWindow.Tabs:FindFirstChild(TabName)
-		
+
 		if CurrentTab ~= nil then
 			local TemplateTextLabel = Instance.new("TextLabel")
 			local Roundify = Instance.new("ImageLabel")
@@ -214,6 +214,52 @@ Lib.AddTextLabel = function(Name,TabName,WindowName)
 			Roundify.SliceScale = 0.040
 		end
 	end
+end
+
+Lib.AddTextButton = function(Name,TabName,WindowName,FunctionToBind)
+	if UndercoversGuiLib:FindFirstChild(WindowName) then
+		local CurrentWindow = UndercoversGuiLib[WindowName]
+		local CurrentTab = CurrentWindow.Tabs:FindFirstChild(TabName)
+
+		if CurrentTab ~= nil then
+			local TemplateButton = Instance.new("TextButton")
+			local TemplateButton_Roundify_4px = Instance.new("ImageLabel")
+
+			TemplateButton.Name = "TemplateButton"
+			TemplateButton.Parent = CurrentTab
+			TemplateButton.BackgroundColor3 = Color3.fromRGB(88, 88, 88)
+			TemplateButton.BackgroundTransparency = 1.000
+			TemplateButton.BorderSizePixel = 0
+			TemplateButton.Size = UDim2.new(0.75, 0, 0.0500000007, 0)
+			TemplateButton.ZIndex = 2
+			TemplateButton.Font = Enum.Font.Code
+			TemplateButton.Text = Name
+			TemplateButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+			TemplateButton.TextScaled = true
+			TemplateButton.TextSize = 14.000
+			TemplateButton.TextWrapped = true
+			TemplateButton.Text = Name
+			
+			TemplateButton_Roundify_4px.Name = "TemplateButton_Roundify_4px"
+			TemplateButton_Roundify_4px.Parent = TemplateButton
+			TemplateButton_Roundify_4px.Active = true
+			TemplateButton_Roundify_4px.AnchorPoint = Vector2.new(0.5, 0.5)
+			TemplateButton_Roundify_4px.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			TemplateButton_Roundify_4px.BackgroundTransparency = 1.000
+			TemplateButton_Roundify_4px.Position = UDim2.new(0.5, 0, 0.5, 0)
+			TemplateButton_Roundify_4px.Selectable = true
+			TemplateButton_Roundify_4px.Size = UDim2.new(1, 0, 1, 0)
+			TemplateButton_Roundify_4px.Image = "rbxassetid://3570695787"
+			TemplateButton_Roundify_4px.ImageColor3 = Color3.fromRGB(88, 88, 88)
+			TemplateButton_Roundify_4px.ScaleType = Enum.ScaleType.Slice
+			TemplateButton_Roundify_4px.SliceCenter = Rect.new(100, 100, 100, 100)
+			TemplateButton_Roundify_4px.SliceScale = 0.040
+			
+			if FunctionToBind ~= nil then
+				TemplateButton.MouseButton1Click:Connect(FunctionToBind)
+			end
+		end
+	end	
 end
 
 return Lib;
