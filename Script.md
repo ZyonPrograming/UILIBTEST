@@ -326,7 +326,7 @@ Lib.AddToggle = function(Name,TabName,WindowName,FunctionToBind)
 			Toggle_Roundify_4px.SliceScale = 0.040
 			
 			Toggle.MouseButton1Click:Connect(function()
-				FunctionToBind()
+				FunctionToBind("PENIS IS WHAT YOU ARE BOY!")
 			end)
 		end
 	end	
