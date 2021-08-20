@@ -239,7 +239,7 @@ Lib.AddTextButton = function(Name,TabName,WindowName,FunctionToBind)
 			TemplateButton.TextSize = 14.000
 			TemplateButton.TextWrapped = true
 			TemplateButton.Text = Name
-			
+
 			TemplateButton_Roundify_4px.Name = "TemplateButton_Roundify_4px"
 			TemplateButton_Roundify_4px.Parent = TemplateButton
 			TemplateButton_Roundify_4px.Active = true
@@ -254,12 +254,83 @@ Lib.AddTextButton = function(Name,TabName,WindowName,FunctionToBind)
 			TemplateButton_Roundify_4px.ScaleType = Enum.ScaleType.Slice
 			TemplateButton_Roundify_4px.SliceCenter = Rect.new(100, 100, 100, 100)
 			TemplateButton_Roundify_4px.SliceScale = 0.040
-			
+
 			if FunctionToBind ~= nil then
 				TemplateButton.MouseButton1Click:Connect(FunctionToBind)
 			end
 		end
 	end	
 end
+
+Lib.AddToggle = function(Name,TabName,WindowName,FunctionToBind)
+	if UndercoversGuiLib:FindFirstChild(WindowName) then
+		local CurrentWindow = UndercoversGuiLib[WindowName]
+		local CurrentTab = CurrentWindow.Tabs:FindFirstChild(TabName)
+		
+		if CurrentTab ~= nil then
+			local Toggle_Template = Instance.new("ImageLabel")
+			local Title = Instance.new("TextLabel")
+			local Toggle = Instance.new("TextButton")
+			local Toggle_Roundify_4px = Instance.new("ImageLabel")
+
+			Toggle_Template.Name = Name
+			Toggle_Template.Parent = CurrentTab
+			Toggle_Template.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Toggle_Template.BackgroundTransparency = 1.000
+			Toggle_Template.Size = UDim2.new(0.400000006, 0, 0.0799999982, 0)
+			Toggle_Template.Image = "rbxassetid://3570695787"
+			Toggle_Template.ImageColor3 = Color3.fromRGB(88, 88, 88)
+			Toggle_Template.ScaleType = Enum.ScaleType.Slice
+			Toggle_Template.SliceCenter = Rect.new(100, 100, 100, 100)
+			Toggle_Template.SliceScale = 0.040
+
+			Title.Name = "Title"
+			Title.Parent = Toggle_Template
+			Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Title.BackgroundTransparency = 1.000
+			Title.Size = UDim2.new(0.699999988, 0, 0.300000012, 0)
+			Title.Font = Enum.Font.Code
+			Title.Text = Name
+			Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+			Title.TextScaled = true
+			Title.TextSize = 14.000
+			Title.TextWrapped = true
+
+			Toggle.Name = "Toggle"
+			Toggle.Parent = Toggle_Template
+			Toggle.BackgroundColor3 = Color3.fromRGB(53, 255, 100)
+			Toggle.BackgroundTransparency = 1.000
+			Toggle.BorderSizePixel = 0
+			Toggle.Position = UDim2.new(0.0299999993, 0, 0.349999994, 0)
+			Toggle.Size = UDim2.new(0.200000003, 0, 0.600000024, 0)
+			Toggle.ZIndex = 2
+			Toggle.Selected = true
+			Toggle.Font = Enum.Font.SourceSans
+			Toggle.Text = ""
+			Toggle.TextColor3 = Color3.fromRGB(0, 0, 0)
+			Toggle.TextSize = 14.000
+
+			Toggle_Roundify_4px.Name = "Toggle_Roundify_4px"
+			Toggle_Roundify_4px.Parent = Toggle
+			Toggle_Roundify_4px.Active = true
+			Toggle_Roundify_4px.AnchorPoint = Vector2.new(0.5, 0.5)
+			Toggle_Roundify_4px.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+			Toggle_Roundify_4px.BackgroundTransparency = 1.000
+			Toggle_Roundify_4px.Position = UDim2.new(0.5, 0, 0.5, 0)
+			Toggle_Roundify_4px.Selectable = true
+			Toggle_Roundify_4px.Size = UDim2.new(1, 0, 1, 0)
+			Toggle_Roundify_4px.Image = "rbxassetid://3570695787"
+			Toggle_Roundify_4px.ImageColor3 = Color3.fromRGB(53, 255, 100)
+			Toggle_Roundify_4px.ScaleType = Enum.ScaleType.Slice
+			Toggle_Roundify_4px.SliceCenter = Rect.new(100, 100, 100, 100)
+			Toggle_Roundify_4px.SliceScale = 0.040
+			
+			Toggle.MouseButton1Click:Connect(function()
+				FunctionToBind()
+			end)
+		end
+	end	
+end
+
 
 return Lib;
