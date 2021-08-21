@@ -268,6 +268,7 @@ Lib.AddToggle = function(Name,TabName,WindowName,FunctionToBind)
 		local CurrentTab = CurrentWindow.Tabs:FindFirstChild(TabName)
 		
 		if CurrentTab ~= nil then
+			getgenv().CurrentToggleValue = nil
 			local Toggle_Template = Instance.new("ImageLabel")
 			local Title = Instance.new("TextLabel")
 			local Toggle = Instance.new("TextButton")
@@ -320,13 +321,19 @@ Lib.AddToggle = function(Name,TabName,WindowName,FunctionToBind)
 			Toggle_Roundify_4px.Selectable = true
 			Toggle_Roundify_4px.Size = UDim2.new(1, 0, 1, 0)
 			Toggle_Roundify_4px.Image = "rbxassetid://3570695787"
-			Toggle_Roundify_4px.ImageColor3 = Color3.fromRGB(53, 255, 100)
+			Toggle_Roundify_4px.ImageColor3 = Color3.fromRGB(255,0,0)
 			Toggle_Roundify_4px.ScaleType = Enum.ScaleType.Slice
 			Toggle_Roundify_4px.SliceCenter = Rect.new(100, 100, 100, 100)
 			Toggle_Roundify_4px.SliceScale = 0.040
 			
 			Toggle.MouseButton1Click:Connect(function()
-				FunctionToBind("PENIS IS WHAT YOU ARE BOY!")
+				CurrentToggleValue = not CurrentToggleValue
+				
+				if CurrentToggleValue == false then
+					Toggle_Roundify_4px.ImageColor3 = Color3.new(255,0,0)
+				else
+					Toggle_Roundify_4px.ImageColor3 = Color3.new(0,255,0)
+				end
 			end)
 		end
 	end	
