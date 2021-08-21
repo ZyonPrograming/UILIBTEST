@@ -268,7 +268,7 @@ Lib.AddToggle = function(Name,TabName,WindowName,FunctionToBind)
 		local CurrentTab = CurrentWindow.Tabs:FindFirstChild(TabName)
 		
 		if CurrentTab ~= nil then
-			getgenv().CurrentToggleValue = nil
+			getgenv().CurrentToggleValue = false
 			local Toggle_Template = Instance.new("ImageLabel")
 			local Title = Instance.new("TextLabel")
 			local Toggle = Instance.new("TextButton")
@@ -328,7 +328,6 @@ Lib.AddToggle = function(Name,TabName,WindowName,FunctionToBind)
 			
 			Toggle.MouseButton1Click:Connect(function()
 				CurrentToggleValue = not CurrentToggleValue
-				FunctionToBind()
 				if CurrentToggleValue == false then
 					Toggle_Roundify_4px.ImageColor3 = Color3.new(255,0,0)
 				else
