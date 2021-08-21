@@ -335,6 +335,7 @@ Lib.AddToggle = function(Name,TabName,WindowName,FunctionToBind)
 					Toggle_Roundify_4px.ImageColor3 = Color3.new(0,255,0)
 				end
 			end)
+			Toggle.MouseButton1Click:Connect(FunctionToBind)
 		end
 	end	
 end
